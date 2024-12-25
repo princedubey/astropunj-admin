@@ -6,22 +6,20 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Mail, Lock } from "lucide-react";
+import useAuthStore from "@/stores/auth-store";
 
 export function AdminLoginForm() {
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter(); // Initialize the router
 
+  const {login} = useAuthStore();
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsLoading(true);
-
-    // Simulate authentication logic
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-
-    setIsLoading(false);
-
-    // Redirect to the dashboard
-    router.push("/dashboard");
+    const formData = new FormData(e.target as HTMLFormElement);
+    const email = formData.get("email") as string;
+    const password = formData.get("password") as string;
+   login(email, password);
   };
 
   return (
@@ -34,6 +32,7 @@ export function AdminLoginForm() {
             id="email"
             placeholder="admin@company.com"
             type="email"
+            name="email"
             className="pl-10"
             required
           />
@@ -46,6 +45,7 @@ export function AdminLoginForm() {
           <Input
             id="password"
             type="password"
+            name="password"
             className="pl-10"
             required
           />
