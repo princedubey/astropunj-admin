@@ -7,7 +7,7 @@ export default function middleware(request: NextRequest) {
     const url = request.nextUrl.pathname;
     if (!access_token && !url.startsWith('/login')) {
         // return NextResponse.redirect('/login');
-        return NextResponse.redirect(new URL('/login', request.url));
+        // return NextResponse.redirect(new URL('/login', request.url));
     }
 
     if(access_token && url.startsWith('/login')) {
