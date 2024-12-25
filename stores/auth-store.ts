@@ -26,9 +26,7 @@ const useAuthStore = create<AuthState>((set) => ({
         set({ isAuthenticated: true, token: dataResponse.data.token ,isLoggingIn: false});
         // store the token in cookies 
         Cookies.set('access_token', dataResponse.data.token);
-        window.location.reload()
-        
-
+        window.location.href = '/dashboard';
       }
     } catch (error) {
         useErrorStore.getState().setError(error);

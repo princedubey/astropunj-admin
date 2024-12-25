@@ -6,8 +6,7 @@ export default function middleware(request: NextRequest) {
 
     const url = request.nextUrl.pathname;
     if (!access_token && !url.startsWith('/login')) {
-        // return NextResponse.redirect('/login');
-        // return NextResponse.redirect(new URL('/login', request.url));
+        return NextResponse.redirect(new URL('/login', request.url));
     }
 
     if(access_token && url.startsWith('/login')) {
@@ -18,6 +17,5 @@ export default function middleware(request: NextRequest) {
 }
 
 export const config = {
-    matcher: '/:path*', // Match all paths
-  };
-  
+    matcher: ["/", "/dashboard/:path*", "/login"], // Match all paths
+};
