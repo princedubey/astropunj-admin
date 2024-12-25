@@ -1,7 +1,7 @@
 export const endpoints = {
   login: "/login",
   register: `/auth/register`,
-  categories: `/categories`,
+  categories: `/admin/categories`,
   astrologers: `/astrologers`,
   users: `/users`,
 };
