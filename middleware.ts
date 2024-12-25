@@ -5,8 +5,9 @@ export default function middleware(request: NextRequest) {
     const access_token = request.cookies.get("access_token");
 
     const url = request.nextUrl.pathname;
-    if (!access_token && url !== '/login') {
-        // return NextResponse.redirect(new URL('/login', request.url));
+    if (!access_token && !url.startsWith('/login')) {
+        // return NextResponse.redirect('/login');
+        return NextResponse.redirect(new URL('/login', request.url));
     }
 
     if(access_token && url.startsWith('/login')) {

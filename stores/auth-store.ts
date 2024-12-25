@@ -38,6 +38,8 @@ const useAuthStore = create<AuthState>((set) => ({
   },
   logout: () => {
     set({ isAuthenticated: false, token: null ,isLoggingIn: false});
+    Cookies.remove('access_token');
+    window.location.reload();
     
   },
 }));
