@@ -17,6 +17,7 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { Badge } from '@/components/ui/badge';
+import { useState } from 'react';
 
 const mockAstrologers = [
   {
@@ -30,6 +31,9 @@ const mockAstrologers = [
 ];
 
 export function AstrologersTable() {
+
+    const [edit, setEdit] = useState(false);
+  
   return (
     <div className="rounded-md border">
       <Table>
@@ -70,7 +74,7 @@ export function AstrologersTable() {
                     </Button>
                   </DropdownMenuTrigger>
                   <DropdownMenuContent align="end">
-                    <DropdownMenuItem>
+                    <DropdownMenuItem onClick={() => setEdit(true)}>
                       <Edit className="h-4 w-4 mr-2" />
                       Edit
                     </DropdownMenuItem>

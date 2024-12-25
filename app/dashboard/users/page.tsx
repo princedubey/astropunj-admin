@@ -10,12 +10,7 @@ export default function UsersPage() {
     <div className="space-y-6">
       <div className="flex justify-between items-center">
         <h2 className="text-3xl font-bold tracking-tight">Users</h2>
-        <Button>
-          <Plus className="h-4 w-4 mr-2" />
-          Add User
-        </Button>
       </div>
-      
       <UsersTableFilters />
       <UsersTable />
     </div>
