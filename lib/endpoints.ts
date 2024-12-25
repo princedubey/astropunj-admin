@@ -5,4 +5,3 @@ export const endpoints = {
   astrologers: `/astrologers`,
   users: `/users`,
 };
-
